@@ -130,7 +130,8 @@ export const SuggestedUsers = () => {
   if (users.length === 0) return null;
 
   return (
-    <Card className="mb-4 mx-4 md:mx-0 p-4 border-border" style={{ boxShadow: "var(--shadow-card)" }}>
+    <div className="mb-6 bg-card border-y border-border">
+      <div className="p-4">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Users className="h-5 w-5 text-primary" />
@@ -244,6 +245,7 @@ export const SuggestedUsers = () => {
           scrollbar-width: none;
         }
       `}</style>
-    </Card>
+      </div>
+    </div>
   );
 };

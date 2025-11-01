@@ -151,13 +151,13 @@ const Index = () => {
     <div className="min-h-screen bg-background pb-20">
       <TopBar />
 
-      <main className="max-w-screen-xl mx-auto pt-4">
-        <div className="px-4 md:px-6">
-          <QuickActions activeFilter={activeFilter} onFilterChange={setActiveFilter} />
+      <main className="pt-4">
+        <QuickActions activeFilter={activeFilter} onFilterChange={setActiveFilter} />
 
-          <CreatePostPrompt />
+        <CreatePostPrompt />
 
-          <Card className="mb-4 p-4 border-border">
+        <div className="mb-6 bg-card border-y border-border">
+          <div className="p-4">
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp className="h-5 w-5 text-primary" />
               <h2 className="font-semibold text-sm text-foreground">Tendencias</h2>
@@ -172,14 +172,16 @@ const Index = () => {
                 </span>
               ))}
             </div>
-          </Card>
+          </div>
+        </div>
 
-          <SuggestedUsers />
+        <SuggestedUsers />
 
-          <SuggestedGroups />
+        <SuggestedGroups />
 
-          {activeFilter !== "all" && (
-            <div className="mb-4 flex items-center justify-between bg-primary/10 text-primary px-4 py-2 rounded">
+        {activeFilter !== "all" && (
+          <div className="mb-4 bg-primary/10 border-y border-primary/30">
+            <div className="flex items-center justify-between text-primary px-4 py-3">
               <p className="text-sm font-medium">
                 Mostrando {filteredProjects.length} {filteredProjects.length === 1 ? "resultado" : "resultados"}
               </p>
@@ -190,18 +192,18 @@ const Index = () => {
                 Ver todo
               </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
-        <div className="space-y-0 mt-4">
+        <div className="space-y-0">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))
           ) : (
-            <Card className="p-12 text-center">
+            <div className="p-12 text-center bg-card border-y border-border">
               <p className="text-muted-foreground">No hay publicaciones de este tipo</p>
-            </Card>
+            </div>
           )}
         </div>
       </main>

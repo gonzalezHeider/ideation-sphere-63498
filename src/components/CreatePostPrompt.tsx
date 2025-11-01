@@ -13,7 +13,8 @@ export const CreatePostPrompt = () => {
   const [open, setOpen] = useState(false);
   
   return (
-    <Card className="p-5 mb-6 mx-4 md:mx-0 border-border bg-card shadow-sm">
+    <div className="mb-6 bg-card border-y border-border">
+      <div className="p-5">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <div className="flex items-center gap-3 cursor-pointer group">
@@ -77,6 +78,7 @@ export const CreatePostPrompt = () => {
           </Tabs>
         </DialogContent>
       </Dialog>
-    </Card>
+      </div>
+    </div>
   );
 };

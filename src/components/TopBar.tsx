@@ -40,8 +40,8 @@ export const TopBar = () => {
   };
 
   return (
-    <header className="sticky top-0 bg-card border-b border-border z-40">
-      <div className="flex items-center justify-between h-14 px-4 md:px-6 max-w-screen-xl mx-auto">
+    <header className="sticky top-0 bg-card border-b border-border z-40 w-full">
+      <div className="flex items-center justify-between h-14 px-4">
         <Link to="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
           <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
             <span className="text-white font-bold text-base">UC</span>

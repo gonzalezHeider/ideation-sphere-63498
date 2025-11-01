@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { MessageSquare, Menu, Settings, User, Bell, HelpCircle, LogOut, Shield, Palette, Globe, Users, Bookmark, Info, AlertCircle, Mail } from "lucide-react";
+import { MessageSquare, Menu, Settings, User, Bell, HelpCircle, LogOut, Shield, Palette, Globe, Users, Bookmark, Info, AlertCircle, Mail, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Drawer,
   DrawerClose,
@@ -17,6 +17,7 @@ import { Separator } from "@/components/ui/separator";
 
 export const TopBar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="sticky top-0 bg-card/95 border-b border-border z-40 backdrop-blur-md shadow-sm">
@@ -70,9 +71,30 @@ export const TopBar = () => {
               </DrawerHeader>
 
               <div className="p-4 space-y-1">
-                {/* Mi Cuenta */}
+                {/* Inicio */}
+                <Link to="/" onClick={() => setOpen(false)}>
+                  <Button 
+                    variant="ghost" 
+                    className={`w-full justify-start h-auto py-4 px-4 hover:bg-primary/10 ${
+                      location.pathname === "/" ? "bg-primary/20 text-primary" : ""
+                    }`}
+                  >
+                    <Home className="mr-3 h-5 w-5 text-primary" />
+                    <div className="flex flex-col items-start">
+                      <span className="font-semibold text-base">Inicio</span>
+                      <span className="text-xs text-muted-foreground">Ver publicaciones y actividad</span>
+                    </div>
+                  </Button>
+                </Link>
+
+                {/* Mi Perfil */}
                 <Link to="/profile/tech_innovator" onClick={() => setOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start h-auto py-4 px-4 hover:bg-primary/10">
+                  <Button 
+                    variant="ghost" 
+                    className={`w-full justify-start h-auto py-4 px-4 hover:bg-primary/10 ${
+                      location.pathname.includes("/profile") ? "bg-primary/20 text-primary" : ""
+                    }`}
+                  >
                     <User className="mr-3 h-5 w-5 text-primary" />
                     <div className="flex flex-col items-start">
                       <span className="font-semibold text-base">Mi Perfil</span>
@@ -90,7 +112,12 @@ export const TopBar = () => {
                 </Button>
 
                 <Link to="/messages" onClick={() => setOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start h-auto py-4 px-4 hover:bg-primary/10">
+                  <Button 
+                    variant="ghost" 
+                    className={`w-full justify-start h-auto py-4 px-4 hover:bg-primary/10 ${
+                      location.pathname === "/messages" ? "bg-primary/20 text-primary" : ""
+                    }`}
+                  >
                     <MessageSquare className="mr-3 h-5 w-5 text-primary" />
                     <div className="flex flex-col items-start">
                       <span className="font-semibold text-base">Mensajes</span>
@@ -100,7 +127,12 @@ export const TopBar = () => {
                 </Link>
 
                 <Link to="/notifications" onClick={() => setOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start h-auto py-4 px-4 hover:bg-primary/10">
+                  <Button 
+                    variant="ghost" 
+                    className={`w-full justify-start h-auto py-4 px-4 hover:bg-primary/10 ${
+                      location.pathname === "/notifications" ? "bg-primary/20 text-primary" : ""
+                    }`}
+                  >
                     <Bell className="mr-3 h-5 w-5 text-primary" />
                     <div className="flex flex-col items-start">
                       <span className="font-semibold text-base">Notificaciones</span>
